@@ -1,4 +1,31 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+
+dotenv.config();
+
+const MONGO_URI = process.env.MONGO_URI;
+
+mongoose.connect(MONGO_URI);
+
+mongoose.connection.on("connected", ()=>{
+    console.log("Database is connected");
+})
+
+mongoose.connection.on("error", (err)=>{
+    console.log("Database is not connected" + err)
+})
+export default mongoose;
+
+
+
+
+
+
+
+
+
+/* import mongoose from 'mongoose';
 import dotenv from 'dotenv'
 
 dotenv.config();
@@ -32,3 +59,4 @@ const connectDB = async () =>{
 
 export default connectDB;
 
+ */
